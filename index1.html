@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+       
+       :root {
+           --bg-color: rgb(16, 16, 16);
+           --border-check: white;
+           --gray: rgb(67, 67, 67);
+           --blue: rgb(78, 78, 217); 
+       }
+       
+       html {
+           scroll-behavior: smooth;
+       }
+       
+       body {
+           font-family: "Poppins", Arial, sans-serif;
+           font-weight: 400;
+           font-style: normal;
+           padding: 0;
+           background-color: var(--bg-color);
+           scroll-behavior: smooth;
+           color: var(--border-check);
+           margin: 0;
+       }
+       
+       .video-bg {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100vw;
+           height: 100vh;
+           object-fit: cover;
+           z-index: -1;
+           opacity: 75%;
+       }
+       
+       .header, .ex-container {
+           position: relative;
+           z-index: 1;
+       }
+       
+       .nav-dev-name {
+           margin-left: 50px;
+           width: fit-content;
+       }
+       
+       .navbar-list > ul * {
+           list-style: none;
+           text-decoration: none;
+           color: var(--border-check);
+           display: inline-block;
+           padding: 0 30px 5px 0;
+           margin-top: 1px;
+           position: relative;
+       }
+       
+       .navbar {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           background-color: rgba(16, 16, 16, 0.8); 
+           border-radius: 25px;
+           width: 1600px;
+           height: 4rem;
+           text-align: center;
+           margin: 20px auto 30px auto;
+           padding: 0 20px;
+        }
+       
+       .navbar-list {
+           margin-right: 50px;
+       }
+
+       .name-and-logo {
+        display: flex;
+       }
+       .navbar > .name-and-logo > img {
+        width: 60px;
+        height: 30px;
+        margin-left: 15px;
+        align-self: center;
+       }
+       
+       .list {
+           color: var(--border-check) !important;
+       }
+       
+       .list:hover {
+           color: var(--border-check) !important;
+       }
+       
+       .list::before {
+           content: "";
+           position: absolute;
+           bottom: -3px;
+           width: 0%;
+           left: 0;
+           background-color: var(--border-check);
+           height: 2px;
+           transition: all 0.5s;
+       }
+       
+       .list:hover::before {
+           width: 80%;
+       }
+       
+       .ex-container {
+           width: 100%;
+           height: 750px auto;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           position: relative;
+       }
+       
+       .main-text {
+           font-size: 55px;
+           color: var(--border-check);
+           position: relative;
+           text-align: center;
+           margin-bottom: 30px;
+       }
+       
+       .main-container {
+           height: 80%;
+           width: 1300px;
+       }
+       
+       .grid-container {
+           height: 100%;
+           width: 1250px;
+           align-self: center;
+           justify-self: center;
+           display: grid;
+           grid-template-columns: repeat(4, 1fr);
+           grid-template-rows: repeat(2, 1fr);
+           gap: 20px;
+       }
+       
+       .grid-item {
+           background-color: var(--gray);
+           border-radius: 25px;
+       }
+       
+       .grid-item > a > img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           border-radius: 25px;
+           opacity: 35%;
+       }
+       
+       .grid-item > a > img:hover {
+           opacity: 100%;
+       }
+       
+       .line-seperator {
+           width: 1050px;
+           height: 1px;
+           margin: 45px 0;
+           background-color: var(--border-check);
+           justify-self: center;
+       }
+       
+       .subject-container {
+           width: 1300px;
+           height: auto;
+           justify-self: center;
+           display: flex;
+           flex-direction: column;           
+       }
+       
+       .subject {
+           width: 100%;
+           height: 450px;
+           margin-bottom: 20px;
+           scroll-margin-top: 100px;
+           background-color: var(--gray);
+           border-radius: 20px;
+           padding: 20px;
+           position: relative;
+       }
+       
+       .subject > h1 {
+           font-size: 30px;
+           color: var(--border-check);
+           text-align: left;
+           width: 94%;
+           justify-self: center;
+       }
+       
+       .subject-content {
+           width: 94%;
+           height: 340px;
+           justify-self: center;
+           display: flex;
+       }
+       
+       .subject-content > .subject-vid, 
+       .subject-content > img {
+           width: 600px;
+           height: 330px;
+           margin-right: 20px;
+       }
+       
+       .subject > a {
+           text-decoration: none;
+           color: var(--border-check);
+           padding: 15px 50px;
+           background-color: var(--blue);
+           margin: 20px 0 0 32px;
+           border-radius: 25px;
+           position: absolute;
+       }
+       
+       footer > .footer-container {
+           display: flex;
+           justify-self: center;
+           justify-content: center;
+           width: 1300px;
+           padding-bottom: 100px;
+       }
+       
+       footer > .footer-container > h1 {
+           color: var(--border-check);
+           font-size: 25px;
+           font-weight: 400;
+           padding-right: 80px;
+       }
+       
+       .ap > .subject-content > img {
+           width: 350px !important;
+       }
+       .esp > .subject-content > img {
+           width: 480px !important;
+       }
+
+       .tle > .subject-content > img {
+           width: 375px !important;
+       }
+       
+       .math > .subject-content > img {
+           width: 370px !important;
+       }
+       
+       .mapeh > .subject-content > img {
+           width: 500px !important;
+       }
+       .filipino > .subject-content > img {
+           width: 400px !important;
+       }
+       
+       /* Media Queries for Responsiveness */
+
+/* For screens smaller than 1200px (e.g., tablets) */
+@media (max-width: 1200px) {
+    .navbar {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .main-container {
+        width: 90%;
+    }
+
+    .grid-container {
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .subject-container {
+        width: 90%;
+    }
+
+    .subject-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subject-content > .subject-vid,
+    .subject-content > img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .subject > a {
+        position: static;
+        margin: 20px auto;
+        display: block;
+        text-align: center;
+    }
+
+    .footer-container {
+        width: 90%;
+    }
+}
+
+/* For screens smaller than 768px (e.g., mobile devices) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .nav-dev-name {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar-list {
+        margin-right: 0;
+    }
+
+    .navbar-list > ul * {
+        padding: 0 15px 5px 0;
+    }
+
+    .main-text {
+        font-size: 40px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .subject {
+        height: auto;
+        padding: 15px;
+    }
+
+    .subject > h1 {
+        font-size: 24px;
+    }
+
+    .subject-content {
+        height: auto;
+    }
+
+    .subject-content > .subject-vid,
+    .subject-content > img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .subject > a {
+        padding: 10px 30px;
+        margin: 15px auto;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-container > h1 {
+        padding-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* For screens smaller than 480px (e.g., small mobile devices) */
+@media (max-width: 480px) {
+    .main-text {
+        font-size: 30px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .subject > h1 {
+        font-size: 20px;
+    }
+
+    .subject-content > .subject-vid,
+    .subject-content > img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .subject > a {
+        padding: 8px 20px;
+        margin: 10px auto;
+    }
+
+    .footer-container > h1 {
+        font-size: 20px;
+    }
+}
+       
+
+    </style>
+    <title>Subject Portfolio</title> 
+</head>
+
+
+<body>
+    <video class="video-bg" src="./Images%20and%20Video/marikinaheritageriverbanks1.mp4" autoplay muted loop></video>
+
+    <header class="header">
+      <nav class="navbar">
+        <div class="name-and-logo">
+          <img src="./Images and Video/logo.png" alt="logo">
+          <h3 class="nav-dev-name">Joshua Cruz</h3>            
+        </div>
+
+         <div class="navbar-list">
+             <ul>
+               <li class="item"><a href="#home" class="list">Home</a></li>
+               <li class="item"><a href="#filipino" class="list">Subjects</a></li>
+               <li class="item"><a href="#about" class="list">About</a></li>
+             </ul>
+         </div>  
+      </nav>
+
+
+    </header>
+
+    <div class="ex-container">
+        <h1 class="main-text">Subjects Folder</h1>
+
+        <div class="main-container">
+
+            <div class="grid-container">
+               <div class="grid-item">
+                <a href="#filipino">
+                  <img src="./Images and Video/filipino.jpg" alt="filipino">
+                </a>
+               </div>
+
+               <div class="grid-item">
+                <a href="#english">
+                  <img src="./Images and Video/english.jpg" alt="english">                     
+                </a>
+               </div>
+
+               <div class="grid-item">
+                <a href="#math">
+                  <img src="./Images and Video/math.jpg" alt="math">                        
+                </a>
+               </div>
+
+               <div class="grid-item">
+                <a href="#science">
+                  <img src="./Images and Video/science.jpg" alt="science">                       
+                </a>
+               </div>
+
+               <div class="grid-item">
+                <a href="#ap">
+                  <img src="./Images and Video/ap.jpg" alt="ap">                     
+                </a>
+               </div>
+
+               <div class="grid-item">
+                <a href="#esp">
+                  <img src="./Images and Video/esp.png" alt="esp">                     
+                </a>
+               </div>
+
+               <div class="grid-item">
+                <a href="#tle">
+                  <img src="./Images and Video/tle.jpg" alt="tle">                    
+                </a>  
+               </div>
+
+               <div class="grid-item">
+                <a href="#mapeh">
+                  <img src="./Images and Video/mapeh.jpg" alt="mapeh">                     
+                </a>
+               </div>
+    
+            </div>
+
+        </div>
+    </div>
+    <div class="line-seperator">
+    </div>
+
+    <div class="subject-container">
+
+        <div id="filipino" class="subject filipino">
+           <h1>Filipino</h1>
+           <div class="subject-content">
+              <img src="./Images and Video/img-vids/Fil-Pr.png" alt="">
+           </div>
+        </div>
+
+        <div id="english" class="subject english">
+           <h1>English</h1>
+           <div class="subject-content">
+            <img src="./Images and Video/img-vids/Eng-Pr.png" alt="">
+
+           </div>
+        </div>
+
+        <div id="math" class="subject math">
+           <h1>Math</h1>
+           <div class="subject-content">
+            <img src="./Images and Video/img-vids/Math-A.jpg" alt="">
+           </div>
+        </div>
+
+        <div id="science" class="subject science">
+           <h1>Science</h1>
+           <div class="subject-content">
+             <img src="./Images and Video/img-vids/Sci-A.jpeg" alt="">
+           </div>
+          
+        </div>
+
+        <div id="ap" class="subject ap">
+           <h1>Araling Panlipunan</h1>
+           <div class="subject-content">
+             <img src="./Images and Video/img-vids/Ap-Pr.jpg" alt="">
+           </div>
+
+        </div>
+
+        <div id="esp" class="subject esp">
+           <h1>ESP</h1>
+           <div class="subject-content">
+            <img src="./Images and Video/img-vids/Esp-A.jpg" alt="">
+           </div>
+
+        </div>
+
+        <div id="tle" class="subject tle">
+           <h1>TLE</h1>
+           <div class="subject-content">
+            <img src="./Images and Video/img-vids/TLE-Pi.jpg" alt="">
+           </div>
+        </div>
+
+        <div id="mapeh" class="subject mapeh">
+           <h1>MAPEH</h1>
+           <div class="subject-content">
+             <img src="./Images and Video/img-vids/Mapeh-Pr.png" alt="">
+           </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-container" id="about">
+           <h1>Joshua Cruz</h1>
+           <h1>10 - Excellence</h1>            
+        </div>
+    </footer>
+</body>
+</html>
